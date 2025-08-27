@@ -6,7 +6,11 @@ Este repositório (`top-infra`) contém a **infraestrutura centralizada** para e
 
 ## 📦 Estrutura de Projetos
 
-Todos os projetos devem estar **no mesmo nível de diretório**, como no exemplo:
+A arquitetura ficou definida da seguinte forma:
+
+![Arquitetura Base](arquitetura_base.png)
+
+Para a execução todos os projetos devem estar **no mesmo nível de diretório**, como no exemplo:
 
 ```
 /meus-projetos/
