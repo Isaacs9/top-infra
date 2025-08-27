@@ -1,0 +1,89 @@
+version: '3.9'
+services:
+  # Postgres
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: topadmin
+      POSTGRES_PASSWORD: toppass
+      POSTGRES_DB: topdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - topnet
+
+  # Users Microservice
+  top-users:
+    build: ../top-users
+    container_name: top-users
+    command: npm run start:dev
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    networks:
+      - topnet
+
+  # Finances Microservice
+  top-finances:
+    build: ../top-finances
+    container_name: top-finances
+    command: npm run start:dev
+    ports:
+      - "3002:3002"
+    depends_on:
+      - postgres
+    networks:
+      - topnet
+
+  # API Gateway
+  top-api-gateway:
+    build: ../top-api-gateway
+    container_name: top-api-gateway
+    command: npm run start:dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - top-users
+      - top-finances
+    networks:
+      - topnet
+
+  # Frontend shell
+  top-frontend:
+    build: ../top-frontend
+    container_name: top-frontend
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    networks:
+      - topnet
+
+  # Microfrontend Users
+  mf-top-users:
+    build: ../mf-top-users
+    container_name: mf-top-users
+    command: npm run dev
+    ports:
+      - "5174:5173"
+    networks:
+      - topnet
+
+  # Microfrontend Finance
+  mf-top-finance:
+    build: ../mf-top-finance
+    container_name: mf-top-finance
+    command: npm run dev
+    ports:
+      - "5175:5173"
+    networks:
+      - topnet
+
+networks:
+  topnet:
+
+volumes:
+  pgdata:
