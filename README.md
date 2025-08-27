@@ -1,4 +1,4 @@
-# 🚀 TOP – Plataforma Completa (Infraestrutura)
+# TOP – Plataforma Completa (Infraestrutura)
 
 Este repositório (`top-infra`) contém a **infraestrutura centralizada** para executar todos os serviços do ecossistema **TOP**, incluindo backends (microserviços), frontends (microfrontends + shell), e banco de dados.
 
@@ -67,15 +67,15 @@ docker-compose up --build
 
 Após o `docker-compose up`, você poderá acessar:
 
-| Serviço                | URL                                   |
-|------------------------|----------------------------------------|
-| API Gateway            | http://localhost:3000                 |
-| top-users              | http://localhost:3001                 |
-| top-finances           | http://localhost:3002                 |
-| Frontend Shell         | http://localhost:5173                 |
-| MF – Users             | http://localhost:5174                 |
-| MF – Finance           | http://localhost:5175                 |
-| Banco de Dados (pg)    | `localhost:5432` (user: `top`, pass: `top123`, db: `topdb`) |
+| Serviço                | URL                                                       |
+|------------------------|-----------------------------------------------------------|
+| API Gateway            | http://localhost:3000                                     |
+| top-users              | tcp:3001                                                  |
+| top-finances           | tcp:3002                                                  |
+| Frontend Shell         | http://localhost:5173                                     |
+| MF – Users             | http://localhost:5174                                     |
+| MF – Finance           | http://localhost:5175                                     |
+| Banco de Dados (pg)    | `localhost:5432` (user: `topadmin`, pass: `toppass`, db: `topdb`) |
 
 ---
 
@@ -92,6 +92,8 @@ npm run start:dev
 ```
 
 ⚠️ Certifique-se de que **o banco de dados PostgreSQL está rodando via Docker** (você pode subir só ele com `docker-compose up postgres`).
+
+⚠️ Cada aplicação tem seu próprio usuário e banco de dados, pode ser conferido no README de cada uma delas. 
 
 ---
 
@@ -133,7 +135,6 @@ docker-compose down -v
 ## 🧪 Dicas para ambiente de testes
 
 - Use `NODE_ENV=development` nos microserviços para permitir `hot reload`.
-- Utilize `docker-compose.override.yml` (opcional) para diferenciar dev/prod.
 - Configure `.env` em cada projeto (`top-users`, `top-finances`, etc.).
 
 ---
