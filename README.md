@@ -16,22 +16,22 @@ Todos os projetos devem estar **no mesmo nível de diretório**, como no exemplo
   ├── top-api-gateway
   ├── top-frontend
   ├── mf-top-users
-  └── mf-top-finance
+  └── mf-top-finances
 ```
 
 ---
 
 ## 🧩 Serviços que compõem a stack
 
-| Serviço             | Porta Local | Descrição                                |
-|---------------------|-------------|------------------------------------------|
-| 🗄️ PostgreSQL       | 5432        | Banco de dados relacional                |
-| 👥 top-users         | 3001        | Microserviço de usuários                 |
-| 💰 top-finances      | 3002        | Microserviço de finanças                 |
-| 🌐 top-api-gateway   | 3000        | Gateway central que orquestra os serviços |
-| 🖥️ top-frontend      | 5173        | Frontend principal (shell)               |
-| 🧩 mf-top-users      | 5174        | Microfrontend de usuários                |
-| 🧩 mf-top-finance    | 5175        | Microfrontend de finanças                |
+| Serviço            | Porta Local | Descrição                                |
+|--------------------|-------------|------------------------------------------|
+| 🗄️ PostgreSQL     | 5432        | Banco de dados relacional                |
+| 👥 top-users       | 3001        | Microserviço de usuários                 |
+| 💰 top-finances    | 3002        | Microserviço de finanças                 |
+| 🌐 top-api-gateway | 3000        | Gateway central que orquestra os serviços |
+| 🖥️ top-frontend   | 5173        | Frontend principal (shell)               |
+| 🧩 mf-top-users    | 5174        | Microfrontend de usuários                |
+| 🧩 mf-top-finances | 5175        | Microfrontend de finanças                |
 
 ---
 
